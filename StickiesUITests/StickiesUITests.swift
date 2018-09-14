@@ -40,6 +40,7 @@ class StickiesUITests: XCTestCase {
 
         // Find the text field
         let inputTextFieldQuery = app.descendants(matching: .textField)
+            .matching(identifier: "stickyTextInput")
         let inputTextFieldElement = inputTextFieldQuery.element
         XCTAssertTrue(inputTextFieldElement.exists)
 
