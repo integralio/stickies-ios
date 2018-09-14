@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         alertController.addAction(ok)
         alertController.addTextField { (textField) in
             self.newNoteInputField = textField
+            textField.accessibilityIdentifier = "stickyTextInput"
         }
         present(alertController, animated: true, completion: nil)
     }
