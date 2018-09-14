@@ -27,10 +27,36 @@ class StickiesUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func testUserCanEnterAndSaveStickyContent() {
+        let app = XCUIApplication()
+
+        // Find the button
+        let buttonQuery = app.descendants(matching: .any)
+            .matching(identifier: "createSticky")
+        let buttonElement = buttonQuery.element
+        XCTAssertTrue(buttonElement.exists)
+        buttonElement.tap()
+
+        // Find the text field
+        let inputTextFieldQuery = app.descendants(matching: .textField)
+        let inputTextFieldElement = inputTextFieldQuery.element
+        XCTAssertTrue(inputTextFieldElement.exists)
+
+        // Type some text
+        let desiredText = UUID().uuidString
+        inputTextFieldElement.typeText(desiredText)
+
+        // Hit OK
+        let okButtonQuery = app.descendants(matching: .button)
+            .matching(identifier: "OK")
+        let okButtonElement = okButtonQuery.element
+        okButtonElement.tap()
+
+        // Verify what we entered got put in the new sticky
+        let result = app.descendants(matching: .any)
+            .matching(identifier: desiredText).element
+        XCTAssertTrue(result.exists)
     }
     
 }
