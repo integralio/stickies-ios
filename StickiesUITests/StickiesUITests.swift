@@ -33,7 +33,7 @@ class StickiesUITests: XCTestCase {
 
         // Find the button
         let buttonQuery = app.descendants(matching: .any)
-            .matching(identifier: "createSticky")
+            .matching(identifier: "stickyAddButton")
         let buttonElement = buttonQuery.element
         XCTAssertTrue(buttonElement.exists)
         buttonElement.tap()
