@@ -31,6 +31,6 @@ archive_project:
     paths:
     - build/ProjectName.ipa
   tags:
-#    - ios_11-3
+    - ios
 #    - xcode_9-3
 #    - macos_10-13
