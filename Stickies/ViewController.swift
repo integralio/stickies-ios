@@ -13,10 +13,15 @@ class ViewController: UIViewController {
     var newNoteInputField: UITextField?
 
     @IBOutlet var newNoteLabel: UILabel?
-
+    @IBOutlet weak var createStickyButton: UIBarButtonItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupView()
+    }
+    
+    func setupView() {
+        createStickyButton?.accessibilityIdentifier = "createSticky"
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func didSelectCreateASticky(_ sender: UIButton) {
+    @IBAction func didSelectCreateASticky(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(
             title: "New Sticky Note",
             message: "Enter some text for your new sticky note.",
