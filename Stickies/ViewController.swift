@@ -13,8 +13,11 @@ class ViewController: UIViewController {
     var newNoteInputField: UITextField?
 
     @IBOutlet var newNoteLabel: UILabel?
+
     @IBOutlet weak var createStickyButton: UIBarButtonItem?
-    
+
+    @IBOutlet weak var welcomeLabel: UILabel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -22,6 +25,7 @@ class ViewController: UIViewController {
     
     func setupView() {
         createStickyButton?.accessibilityIdentifier = "createSticky"
+        welcomeLabel?.accessibilityIdentifier = "welcomeLabel"
     }
 
     override func didReceiveMemoryWarning() {

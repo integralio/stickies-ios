@@ -28,6 +28,17 @@ class StickiesUITests: XCTestCase {
         super.tearDown()
     }
 
+    func testDisplaysWelcomeLabelOnAppLaunch() {
+        let app = XCUIApplication()
+
+        // Ensure there is a welcome label
+        let labelQuery = app.descendants(matching: .staticText)
+            .matching(identifier: "welcomeLabel")
+        let labelElement = labelQuery.element
+        XCTAssertTrue(labelElement.exists)
+        XCTAssertTrue(labelElement.isHittable)
+    }
+
     func testUserCanEnterAndSaveStickyContent() {
         let app = XCUIApplication()
 
