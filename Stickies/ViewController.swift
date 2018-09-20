@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
 
     // MARK: -
-    // MARK: - Sticky Note Handling
+    // MARK: Sticky Note Handling
 
     /// Updates the visibility of the sticky note paper, based upon if the sticky note has text or not.
     func updateStickyNoteVisibility() {
@@ -108,6 +108,7 @@ class ViewController: UIViewController {
         alertController.addAction(ok)
         alertController.addTextField { (textField) in
             self.editNoteInputField = textField
+            textField.text = self.noteLabel?.text
             textField.accessibilityIdentifier = "stickyTextInput"
         }
         present(alertController, animated: true, completion: nil)
