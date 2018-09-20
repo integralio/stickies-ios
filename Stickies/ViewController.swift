@@ -12,13 +12,15 @@ class ViewController: UIViewController {
 
     var newNoteInputField: UITextField?
 
-    @IBOutlet var newNoteLabel: UILabel?
+    @IBOutlet weak var newNoteLabel: UILabel?
 
     @IBOutlet weak var createStickyButton: UIBarButtonItem?
 
     @IBOutlet weak var welcomeLabel: UILabel?
 
-    @IBOutlet weak var noteLabel: UILabel?
+    @IBOutlet weak var stickyLabel: UILabel?
+
+    @IBOutlet weak var stickyPaper: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +30,9 @@ class ViewController: UIViewController {
     func setupView() {
         createStickyButton?.accessibilityIdentifier = "createSticky"
         welcomeLabel?.accessibilityIdentifier = "welcomeLabel"
-        noteLabel?.accessibilityIdentifier = "newStickyLabel"
+        stickyLabel?.accessibilityIdentifier = "newStickyLabel"
 
-        noteLabel?.isHidden = true
+        stickyPaper?.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,7 +47,7 @@ class ViewController: UIViewController {
             preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default) { (_) in
             self.newNoteLabel?.text = self.newNoteInputField?.text
-            self.noteLabel?.isHidden = false
+            self.stickyPaper?.isHidden = false
         }
         alertController.addAction(ok)
         alertController.addTextField { (textField) in
