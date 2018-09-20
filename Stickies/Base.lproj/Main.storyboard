@@ -20,7 +20,6 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="some arbitrary text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axi-wy-gOx">
                                 <rect key="frame" x="115" y="192" width="144.5" height="30"/>
-                                <accessibility key="accessibilityConfiguration" identifier="newNoteLabel"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hjE-1s-YTs"/>
                                 </constraints>
@@ -53,6 +52,7 @@
                     <connections>
                         <outlet property="createStickyButton" destination="izg-Mv-gFl" id="dEo-SM-OKo"/>
                         <outlet property="newNoteLabel" destination="axi-wy-gOx" id="GBH-5o-9RY"/>
+                        <outlet property="noteLabel" destination="axi-wy-gOx" id="04b-33-rK3"/>
                         <outlet property="welcomeLabel" destination="UqX-HV-FB4" id="zoB-nT-vfo"/>
                     </connections>
                 </viewController>
