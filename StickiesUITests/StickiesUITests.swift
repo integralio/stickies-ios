@@ -9,7 +9,7 @@
 import XCTest
 
 class StickiesUITests: XCTestCase {
-        
+
     override func setUp() {
         super.setUp()
         
@@ -26,6 +26,24 @@ class StickiesUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+
+    func testDisplaysWelcomeLabelOnAppLaunch() {
+        let app = XCUIApplication()
+
+        // Ensure there is a welcome label
+        let labelQuery = app.descendants(matching: .staticText)
+            .matching(identifier: "welcomeLabel")
+        let labelElement = labelQuery.element
+        XCTAssertTrue(labelElement.exists)
+        XCTAssertTrue(labelElement.isHittable)
+    }
+
+    func testStickyNoteTextIsNotVisibleOnAppLaunch() {
+        let app = XCUIApplication()
+
+        let query = getNewStickyLabelElementQuery(from: app)
+        XCTAssertEqual(query.count, 0)
     }
 
     func testUserCanEnterAndSaveStickyContent() {
@@ -55,9 +73,16 @@ class StickiesUITests: XCTestCase {
         okButtonElement.tap()
 
         // Verify what we entered got put in the new sticky
-        let result = app.descendants(matching: .any)
-            .matching(identifier: desiredText).element
+        let result = getNewStickyLabelElementQuery(from: app).element
         XCTAssertTrue(result.exists)
+        XCTAssertTrue(result.isHittable)
     }
     
+}
+
+extension StickiesUITests {
+    func getNewStickyLabelElementQuery(from app: XCUIApplication) -> XCUIElementQuery {
+        return app.descendants(matching: .staticText)
+            .matching(identifier: "newStickyLabel")
+    }
 }
