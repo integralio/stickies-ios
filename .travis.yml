@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: Stickies.xcodeproj
+xcode_scheme: Stickies
+xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone X
