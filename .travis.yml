@@ -4,7 +4,7 @@ jobs:
     - stage: backend
       language: java
       jdk:
-        - oraclejdk8
+        - openjdk8
       script: echo hello backend; cd backend; ./gradlew check
     - stage: frontend
       language: objective-c
