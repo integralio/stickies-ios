@@ -3,7 +3,7 @@ jobs:
   include:
     - stage: backend
       language: java
-      script: echo hello backend; cd backend; ./gradlew check
+      script: echo hello backend; cd backend; ls -al; ./gradlew check
     - stage: frontend
       language: objective-c
       xcode_project: frontend/Stickies.xcodeproj
