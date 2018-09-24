@@ -3,7 +3,7 @@ jobs:
   - stage: backend
     language: java
     script: cd backend; ls -al; ./gradlew build; ls -al;
-    after_success: echo hello after success; git tag hello-$(date)
+    after_success: echo hello after success; git tag hello123
     deploy:
       provider: releases
       api_key:
