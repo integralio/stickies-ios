@@ -1,4 +1,10 @@
-language: objective-c
-xcode_project: frontend/Stickies.xcodeproj
-xcode_scheme: Stickies
-xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+
+jobs:
+  include:
+    - stage: backend
+      script: echo hello backend
+    - stage: frontend
+      language: objective-c
+      xcode_project: frontend/Stickies.xcodeproj
+      xcode_scheme: Stickies
+      xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
