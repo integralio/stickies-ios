@@ -12,8 +12,11 @@ jobs:
       skip_cleanup: true
       on:
         all_branches: true
+
+    # need to get a URL to the uploaded deploy artifact
   - stage: frontend
     language: objective-c
     xcode_project: frontend/Stickies.xcodeproj
     xcode_scheme: Stickies
     xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+    script: echo hello123;  curl https://github.com/integralio/stickies-ios/releases/download/untagged-82bf4f7d7359948a0a05/sticky-0.0.1-SNAPSHOT.jar ;  ls -al;  java -jar sticky*.jar
