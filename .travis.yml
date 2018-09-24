@@ -1,11 +1,18 @@
-
 jobs:
   include:
-    - stage: backend
-      language: java
-      script: echo hello backend; cd backend; ls -al; ./gradlew check
-    - stage: frontend
-      language: objective-c
-      xcode_project: frontend/Stickies.xcodeproj
-      xcode_scheme: Stickies
-      xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
+  - stage: backend
+    language: java
+    script: echo hello backend; cd backend; ls -al; ./gradlew build; ls -al;
+    deploy:
+      provider: releases
+      api_key: 
+        secure: YmbMkBXoYRob032Nw2OeWiiLox8ruQ/03GMO8ylLeD9H35ZEU3rAAK/eNHJ1KjhErrumLxaZaSA0Bs/vPhgACibLro20Yuauqj52HCuu7qDJ3+6kdMKReB56CYqogtZ6kXja2vMI/zZmQhFZeTxBPVUegu2RhMMy7S35yVJZ62W79tbsjzUAGp7Oph9al4x7eCjto1GC+ChxX7XCXauDh7++cF6UT7Q8V1J+7H4YrZFSv4eLNHgL5twjhOG/NWn8jHL9aHQ0Qrph0W+DU7CPBjy5uGwaHaffgiPVP0xC1dUR3zsh5cbc0S2lecPfVEA7uXvrK7x8UvmT2x+6kcYmcI0qDLQQJnGrQbpxAa192ixT6meVJTsm+mYpZkSaH7aD8YJZuF7DRDlc4oQn/Ze5b29N5RUuwdj/uUseJQ20sn2y9fw+0HbeOjr307k9R+s6B02hPHAIOsxVWQsNamWT1fkVjMBNolsnsRPhgHTMSxEOmYfo3agx2frDDn78/zLqM4mnJK1N8iZyeX9XqXBLA+W8h5gdBf/gGSK1SKbeQFBzirx+TCo4d/6cKEraitioaHpgwYBBO17lZR6Ecmg619rC1wQJ7XTwvmakXZYJrV5rpAMF/1XdyVVfGTnJO/4k4hXs6TWregeqEm4tZeCI/TFo4/iaX/MhvHGmIyL3O6Q=
+      file: "./gradlew"
+      skip_cleanup: true
+      on:
+        tags: true
+  - stage: frontend
+    language: objective-c
+    xcode_project: frontend/Stickies.xcodeproj
+    xcode_scheme: Stickies
+    xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
