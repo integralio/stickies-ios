@@ -5,9 +5,9 @@ jobs:
     script: echo hello backend; cd backend; ls -al; ./gradlew build; ls -al;
     deploy:
       provider: releases
-      api_key: 
-        secure: YmbMkBXoYRob032Nw2OeWiiLox8ruQ/03GMO8ylLeD9H35ZEU3rAAK/eNHJ1KjhErrumLxaZaSA0Bs/vPhgACibLro20Yuauqj52HCuu7qDJ3+6kdMKReB56CYqogtZ6kXja2vMI/zZmQhFZeTxBPVUegu2RhMMy7S35yVJZ62W79tbsjzUAGp7Oph9al4x7eCjto1GC+ChxX7XCXauDh7++cF6UT7Q8V1J+7H4YrZFSv4eLNHgL5twjhOG/NWn8jHL9aHQ0Qrph0W+DU7CPBjy5uGwaHaffgiPVP0xC1dUR3zsh5cbc0S2lecPfVEA7uXvrK7x8UvmT2x+6kcYmcI0qDLQQJnGrQbpxAa192ixT6meVJTsm+mYpZkSaH7aD8YJZuF7DRDlc4oQn/Ze5b29N5RUuwdj/uUseJQ20sn2y9fw+0HbeOjr307k9R+s6B02hPHAIOsxVWQsNamWT1fkVjMBNolsnsRPhgHTMSxEOmYfo3agx2frDDn78/zLqM4mnJK1N8iZyeX9XqXBLA+W8h5gdBf/gGSK1SKbeQFBzirx+TCo4d/6cKEraitioaHpgwYBBO17lZR6Ecmg619rC1wQJ7XTwvmakXZYJrV5rpAMF/1XdyVVfGTnJO/4k4hXs6TWregeqEm4tZeCI/TFo4/iaX/MhvHGmIyL3O6Q=
-      file: "backend/build/libs/*.jar"
+      api_key:
+        secure: L3QEA6EGHS6Tu+/UJtVYeT9TGyvGpRLBO3d/A9whR8rujQuI91iekUPlzKS3DCo2fZwFaw+LilZ44QobmiPL4m13cRZPkyMJsH+6cYwpewOZkkjRvZaujHe/ha5L7YsLQGV16rCvfuSr/GiR78FE07UR/rceiXkLyn15YdMXWVRjUZcMMWitVmLVrxg6hpTvQM4BVEMQ9vOLOfeQxIoCCETwmgHbPM8G4qJKWsM9/fOcGthQk6xI3M33MRnZ29JRJhKzX3cMzmpRJ02jCVTvmDG7/zMeIhtie8HC1k4zYvpHft/2RtFTxc6A5EC1pycnle37H8gPYJKhHEhcDzW9kenD0YIXW13M3uv71fBswlU6PeBQQl/ShV4VLSo8vIXZleNGkGjM/1rTLbn8hFL0LC3O9eHTwhZY3ETSZRwBMRAQBLvaMBRtX/ZeK+9vBP1DZ79jNzpAzxNHoL/JiSXASqAm/d5ckzok6yl8NTQjEK+TjHmSOhrrJELhiRCoCRIpFEivX5qvm4O8rWov9toT2h3YITVeaLaTXsNRabr2AyglGQEgxwOQDaaMh2Seesp+dn2OgFeC0NNTI74QLpu2hF5CVvNjz/TszQ0YkewnVS1W3piI3UkyzoJ6jeR6ClXbdQmwE5PW3qmp8NHetw0y+DUFDOcYxeQMGCWWsBy9Np4=
+      file: backend/build/libs/*.jar
       skip_cleanup: true
       on:
         all_branches: true
