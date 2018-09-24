@@ -2,7 +2,7 @@ jobs:
   include:
   - stage: backend
     language: java
-    script: echo hello backend; cd backend; ls -al; ./gradlew build; ls -al;
+    script: cd backend; ls -al; ./gradlew build; ls -al;
     deploy:
       provider: releases
       api_key:
