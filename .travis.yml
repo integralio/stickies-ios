@@ -2,7 +2,10 @@
 jobs:
   include:
     - stage: backend
-      script: echo hello backend
+      language: java
+      jdk:
+        - oraclejdk8
+      script: echo hello backend; cd backend; ./gradlew check
     - stage: frontend
       language: objective-c
       xcode_project: frontend/Stickies.xcodeproj
