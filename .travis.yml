@@ -3,6 +3,7 @@ jobs:
   - stage: backend
     language: java
     script: cd backend; ls -al; ./gradlew build; ls -al;
+    before_deploy: git tag hello-$(date)
     deploy:
       provider: releases
       api_key:
