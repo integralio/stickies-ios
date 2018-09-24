@@ -12,6 +12,7 @@ jobs:
       skip_cleanup: true
       on:
         all_branches: true
+        tags: true
 
     # need to get a URL to the uploaded deploy artifact
   - stage: frontend
