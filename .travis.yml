@@ -3,7 +3,7 @@ jobs:
   - stage: backend
     language: java
     script: cd backend; ls -al; ./gradlew build; ls -al;
-    after_success: echo hello after success; git tag hello123
+    after_success: echo hello after success; git tag hello222; git push
     deploy:
       provider: releases
       api_key:
@@ -13,7 +13,6 @@ jobs:
       skip_cleanup: true
       on:
         all_branches: true
-        tags: true
 
     # need to get a URL to the uploaded deploy artifact
   - stage: frontend
