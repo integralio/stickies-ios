@@ -25,12 +25,8 @@ jobs:
       file_glob: true
       file: ./**/*.jar
       skip_cleanup: true
-      # on:
-      #   tags: true
-      #   branches: 
-      #     only:
-      #     - master
-      #     - add_cicd_scripts_practice
+      on:
+        all_branches: true
 
     # need to get a URL to the uploaded deploy artifact
   - stage: frontend
