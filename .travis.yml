@@ -34,7 +34,7 @@ jobs:
     xcode_project: frontend/Stickies.xcodeproj
     xcode_scheme: Stickies
     xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
-    before_install: 
+    before_script: 
       - echo CHECKING if we have variables:  # $BACKEND_JAR_FILENAME  and $TAG_NAME
 #      - echo the URL is... https://github.com/integralio/stickies-ios/releases/download/$(echo $TAG_NAME)/$BACKEND_JAR_FILENAME
 #      - echo before_install , checking BACKEND_JAR $BACKEND_JAR checking TRAVIS_BACKEND_JAR $TRAVIS_BACKEND_JAR ; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(echo $TAG_NAME)/$BACKEND_JAR_FILENAME > backend.jar ;  ls -al;   echo $TAG_NAME;  echo $TRAVIS_COMMIT;  
