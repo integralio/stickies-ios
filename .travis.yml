@@ -2,7 +2,7 @@ jobs:
   include:
   - stage: backend
     language: java
-    script: cd backend; ls -al; ./gradlew build; ls -al;
+    script: echo Checking Env Vars: $BACKEND_JAR_FILENAME $FOO ; cd backend; ls -al; ./gradlew build; ls -al;
 
     #after_success: echo hello after success; git tag hello222; git push
     after_success: export TRAVIS_BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $TRAVIS_BACKEND_JAR; export BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $BACKEND_JAR ;  echo testing git branch... ; git branch
