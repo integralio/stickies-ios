@@ -8,13 +8,13 @@ jobs:
     after_success: export TRAVIS_BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $TRAVIS_BACKEND_JAR; export BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $BACKEND_JAR ;  echo testing git branch... ; git branch
 
     before_deploy:
-    - export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER"
-    - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
-    #- git config --local user.name "$USER_NAME"
-    #- git config --local user.email "$USER_EMAIL"
+    - export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER" ; echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
     - git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
-    # - export TRAVIS_COMMIT="My own defined value for this variable"
-    # - export TRAVIS_TAG="My own defined value for this variable"
+    - ./ci-scripts/travis-update-tag-name.sh $TRAVIS_TAG
+    - echo the name of the jar is $(cat build/libs/*.jar)
+    - ./ci-scripts/travis-update-jar-filename.sh $(cat build/libs/*.jar)
+
+
     deploy:
       provider: releases
       tag_name: $TRAVIS_TAG
@@ -35,6 +35,7 @@ jobs:
     xcode_scheme: Stickies
     xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
     before_install: 
-      - echo the URL is... https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/$BACKEND_JAR_FILENAME
-      - echo before_install , checking BACKEND_JAR $BACKEND_JAR checking TRAVIS_BACKEND_JAR $TRAVIS_BACKEND_JAR ; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/$BACKEND_JAR_FILENAME > backend.jar ;  ls -al;   echo $TRAVIS_TAG;  echo $TRAVIS_COMMIT;  #java -jar backend.jar& ;
+      - echo PLACEHOLDER.... NEED TO GET THE TAG NAME HERE  AND THE NAME OF THE JAR
+      - echo the URL is... https://github.com/integralio/stickies-ios/releases/download/$(echo $TAG_NAME)/$BACKEND_JAR_FILENAME
+      - echo before_install , checking BACKEND_JAR $BACKEND_JAR checking TRAVIS_BACKEND_JAR $TRAVIS_BACKEND_JAR ; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(echo $TAG_NAME)/$BACKEND_JAR_FILENAME > backend.jar ;  ls -al;   echo $TAG_NAME;  echo $TRAVIS_COMMIT;  #java -jar backend.jar& ;
     after_script: curl localhost:8080/
