@@ -13,8 +13,8 @@ jobs:
     #- git config --local user.name "$USER_NAME"
     #- git config --local user.email "$USER_EMAIL"
     - git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
-    - export TRAVIS_COMMIT="My own defined value for this variable"
-    - export TRAVIS_TAG="My own defined value for this variable"
+    # - export TRAVIS_COMMIT="My own defined value for this variable"
+    # - export TRAVIS_TAG="My own defined value for this variable"
     deploy:
       provider: releases
       tag_name: $TRAVIS_TAG
