@@ -11,8 +11,8 @@ jobs:
     - export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER" ; echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
     - git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
     - ../ci-scripts/travis-update-tag-name.sh $TRAVIS_TAG
-    - echo the name of the jar is $(cat build/libs/*.jar)
-    - ../ci-scripts/travis-update-jar-filename.sh $(cat build/libs/*.jar)
+    - echo the name of the jar is $(ls build/libs/*.jar)
+    - ../ci-scripts/travis-update-jar-filename.sh $(ls build/libs/*.jar)
 
 
     deploy:
