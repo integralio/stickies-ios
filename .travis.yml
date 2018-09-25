@@ -25,12 +25,12 @@ jobs:
       file_glob: true
       file: ./**/*.jar
       skip_cleanup: true
-      on:
-        tags: true
-        branches: 
-          only:
-          - master
-          - add_cicd_scripts_practice
+      # on:
+      #   tags: true
+      #   branches: 
+      #     only:
+      #     - master
+      #     - add_cicd_scripts_practice
 
     # need to get a URL to the uploaded deploy artifact
   - stage: frontend
@@ -38,5 +38,5 @@ jobs:
     xcode_project: frontend/Stickies.xcodeproj
     xcode_scheme: Stickies
     xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
-    before_install: echo before_install , checking BACKEND_JAR $BACKEND_JAR checking TRAVIS_BACKEND_JAR $TRAVIS_BACKEND_JAR ; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/sticky-0.0.1-SNAPSHOT.jar > backend.jar ;  ls -al;  java -jar backend.jar& ;  echo $TRAVIS_TAG;  echo $TRAVIS_COMMIT;
+    before_install: echo before_install , checking BACKEND_JAR $BACKEND_JAR checking TRAVIS_BACKEND_JAR $TRAVIS_BACKEND_JAR ; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/$BACKEND_JAR_FILENAME > backend.jar ;  ls -al;  java -jar backend.jar& ;  echo $TRAVIS_TAG;  echo $TRAVIS_COMMIT;
     after_script: curl localhost:8080/
