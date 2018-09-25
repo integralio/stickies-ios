@@ -5,7 +5,7 @@ jobs:
     script: cd backend; ls -al; ./gradlew build; ls -al;
 
     #after_success: echo hello after success; git tag hello222; git push
-    after_success: export BACKEND_JAR="$(ls build/libs/*.jar)"
+    after_success: export TRAVIS_BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $TRAVIS_BACKEND_JAR; export BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $BACKEND_JAR
 
     before_deploy:
     - export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER"
@@ -32,5 +32,5 @@ jobs:
     xcode_project: frontend/Stickies.xcodeproj
     xcode_scheme: Stickies
     xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone X
-    before_install: echo before_install , checking BACKEND_JAR $BACKEND_JAR; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(TRAVIS_TAG)/sticky-0.0.1-SNAPSHOT.jar > backend.jar ;  ls -al;  java -jar backend.jar&
+    before_install: echo before_install , checking BACKEND_JAR $BACKEND_JAR checking TRAVIS_BACKEND_JAR $TRAVIS_BACKEND_JAR ; echo hello123;  curl -L https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/sticky-0.0.1-SNAPSHOT.jar > backend.jar ;  ls -al;  java -jar backend.jar&
     after_script: curl localhost:8080/
