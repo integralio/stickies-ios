@@ -13,7 +13,7 @@ jobs:
     - echo TRAVIS_TAG is $TRAVIS_TAG
     - ../ci-scripts/travis-update-tag-name.sh $TRAVIS_TAG
     - echo the name of the jar is $(ls build/libs/*.jar)
-    - ../ci-scripts/travis-update-jar-filename.sh $(ls build/libs/*.jar)
+    - ../ci-scripts/travis-update-jar-filename.sh $(basename $(ls build/libs/*.jar))
 
 
     deploy:
