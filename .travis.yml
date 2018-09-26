@@ -5,11 +5,12 @@ jobs:
     script: echo Checking Env Vars... $BACKEND_JAR_FILENAME $FOO ; cd backend; ls -al; ./gradlew build; ls -al;
 
     #after_success: echo hello after success; git tag hello222; git push
-    after_success: export TRAVIS_BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $TRAVIS_BACKEND_JAR; export BACKEND_JAR="$(ls build/libs/*.jar)" ; echo $BACKEND_JAR ;  echo testing git branch... ; git branch
+    after_success: echo this is the name of the jar... ; ls build/libs/*.jar; echo testing git branch... ; git branch
 
     before_deploy:
     #- export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER" ; echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
     #- git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
+    - echo TRAVIS_TAG is $TRAVIS_TAG
     - ../ci-scripts/travis-update-tag-name.sh $TRAVIS_TAG
     - echo the name of the jar is $(ls build/libs/*.jar)
     - ../ci-scripts/travis-update-jar-filename.sh $(ls build/libs/*.jar)
