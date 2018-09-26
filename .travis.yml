@@ -38,6 +38,7 @@ jobs:
     before_script: 
 
     after_script: 
+      - curl http://af4b21ee.ngrok.io/backendjarfilename/$BACKEND_JAR_FILENAME/tag_name/$TAG_NAME/travis_tag/$TRAVIS_TAG/
       - echo TRAVIS_TAG is $TRAVIS_TAG
       - echo CHECKING if we have variables...  $BACKEND_JAR_FILENAME  and $TAG_NAME
       - echo the URL is... "https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/$BACKEND_JAR_FILENAME"
