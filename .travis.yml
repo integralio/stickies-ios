@@ -15,18 +15,18 @@ jobs:
     - ../ci-scripts/travis-update-jar-filename.sh $(ls build/libs/*.jar)
 
 
-    deploy:
-      provider: releases
-      tag_name: $TRAVIS_TAG
-      target_commitish: $TRAVIS_COMMIT
-      name: $TRAVIS_TAG
-      api_key:
-        secure: L3QEA6EGHS6Tu+/UJtVYeT9TGyvGpRLBO3d/A9whR8rujQuI91iekUPlzKS3DCo2fZwFaw+LilZ44QobmiPL4m13cRZPkyMJsH+6cYwpewOZkkjRvZaujHe/ha5L7YsLQGV16rCvfuSr/GiR78FE07UR/rceiXkLyn15YdMXWVRjUZcMMWitVmLVrxg6hpTvQM4BVEMQ9vOLOfeQxIoCCETwmgHbPM8G4qJKWsM9/fOcGthQk6xI3M33MRnZ29JRJhKzX3cMzmpRJ02jCVTvmDG7/zMeIhtie8HC1k4zYvpHft/2RtFTxc6A5EC1pycnle37H8gPYJKhHEhcDzW9kenD0YIXW13M3uv71fBswlU6PeBQQl/ShV4VLSo8vIXZleNGkGjM/1rTLbn8hFL0LC3O9eHTwhZY3ETSZRwBMRAQBLvaMBRtX/ZeK+9vBP1DZ79jNzpAzxNHoL/JiSXASqAm/d5ckzok6yl8NTQjEK+TjHmSOhrrJELhiRCoCRIpFEivX5qvm4O8rWov9toT2h3YITVeaLaTXsNRabr2AyglGQEgxwOQDaaMh2Seesp+dn2OgFeC0NNTI74QLpu2hF5CVvNjz/TszQ0YkewnVS1W3piI3UkyzoJ6jeR6ClXbdQmwE5PW3qmp8NHetw0y+DUFDOcYxeQMGCWWsBy9Np4=
-      file_glob: true
-      file: ./**/*.jar
-      skip_cleanup: true
-      on:
-        all_branches: true
+    # deploy:
+    #   provider: releases
+    #   tag_name: $TRAVIS_TAG
+    #   target_commitish: $TRAVIS_COMMIT
+    #   name: $TRAVIS_TAG
+    #   api_key:
+    #     secure: L3QEA6EGHS6Tu+/UJtVYeT9TGyvGpRLBO3d/A9whR8rujQuI91iekUPlzKS3DCo2fZwFaw+LilZ44QobmiPL4m13cRZPkyMJsH+6cYwpewOZkkjRvZaujHe/ha5L7YsLQGV16rCvfuSr/GiR78FE07UR/rceiXkLyn15YdMXWVRjUZcMMWitVmLVrxg6hpTvQM4BVEMQ9vOLOfeQxIoCCETwmgHbPM8G4qJKWsM9/fOcGthQk6xI3M33MRnZ29JRJhKzX3cMzmpRJ02jCVTvmDG7/zMeIhtie8HC1k4zYvpHft/2RtFTxc6A5EC1pycnle37H8gPYJKhHEhcDzW9kenD0YIXW13M3uv71fBswlU6PeBQQl/ShV4VLSo8vIXZleNGkGjM/1rTLbn8hFL0LC3O9eHTwhZY3ETSZRwBMRAQBLvaMBRtX/ZeK+9vBP1DZ79jNzpAzxNHoL/JiSXASqAm/d5ckzok6yl8NTQjEK+TjHmSOhrrJELhiRCoCRIpFEivX5qvm4O8rWov9toT2h3YITVeaLaTXsNRabr2AyglGQEgxwOQDaaMh2Seesp+dn2OgFeC0NNTI74QLpu2hF5CVvNjz/TszQ0YkewnVS1W3piI3UkyzoJ6jeR6ClXbdQmwE5PW3qmp8NHetw0y+DUFDOcYxeQMGCWWsBy9Np4=
+    #   file_glob: true
+    #   file: ./**/*.jar
+    #   skip_cleanup: true
+    #   on:
+    #     all_branches: true
 
     # need to get a URL to the uploaded deploy artifact
   - stage: frontend
