@@ -2,19 +2,13 @@ jobs:
   include:
   - stage: backend
     language: java
-    script: echo Checking Env Vars... $BACKEND_JAR_FILENAME $FOO ; cd backend; ls -al; ./gradlew build; ls -al;
-
-    #after_success: echo hello after success; git tag hello222; git push
-    after_success: echo this is the name of the jar... ; ls build/libs/*.jar; echo testing git branch... ; git branch
+    script: cd backend; ls -al; ./gradlew build; ls -al;
 
     before_deploy:
-    #- export TRAVIS_TAG="1.0.$TRAVIS_BUILD_NUMBER" ; echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
-    #- git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
     - echo TRAVIS_TAG is $TRAVIS_TAG
     - ../ci-scripts/travis-update-tag-name.sh $TRAVIS_TAG
     - echo the name of the jar is $(ls build/libs/*.jar)
     - ../ci-scripts/travis-update-jar-filename.sh $(basename $(ls build/libs/*.jar))
-
 
     deploy:
       provider: releases
@@ -30,7 +24,6 @@ jobs:
         all_branches: true
         tags: true
 
-    # need to get a URL to the uploaded deploy artifact
   - stage: frontend
     language: objective-c
     xcode_project: frontend/Stickies.xcodeproj
@@ -39,7 +32,6 @@ jobs:
     before_script: 
 
     after_script: 
-      - curl http://af4b21ee.ngrok.io/backendjarfilename/$BACKEND_JAR_FILENAME/tag_name/$TAG_NAME/travis_tag/$TRAVIS_TAG/
       - echo TRAVIS_TAG is $TRAVIS_TAG
       - echo CHECKING if we have variables...  $BACKEND_JAR_FILENAME  and $TAG_NAME
       - echo the URL is... "https://github.com/integralio/stickies-ios/releases/download/$(echo $TRAVIS_TAG)/$BACKEND_JAR_FILENAME"
@@ -47,4 +39,3 @@ jobs:
       - java -jar backend.jar&
       - echo going to sleep; sleep 30; curl localhost:8080/
       
-
